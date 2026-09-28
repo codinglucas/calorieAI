@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Image</title>
+    <script src="/static/script.js" defer></script>
+</head>
+<body>
+    <h2>Upload an Image to Python</h2>
+    
+    <!-- The action attribute links to your Python backend route -->
+        <!-- The 'name' attribute is how Python identifies this specific file -->
+        <input type="file" id="imageInput" accept="image/*" />
+        <button id="uploadBtn">Upload & Fetch Image</button>
+
+        <img id="preview" alt="Uploaded Result" style="display: none; max-width: 400px;" />
+</body>
+</html>
