@@ -2,6 +2,7 @@ import os
 from google import genai
 from pydantic import BaseModel, Field
 import base64
+from data_handler import update_daily_records
 
 with open('uploads/images.jpeg', 'rb') as file:
     image_bytes = file.read()
@@ -74,5 +75,7 @@ When the image quality, angle, lighting, occlusion, or lack of scale makes preci
     },
 )
 
-# The model's response will be valid JSON adhering strictly to ExtractedData
-print(interaction.output_text)
+result = ExtractedData.model_validate_json(interaction.output_text)
+result_dict = result.model_dump()
+
+update_daily_records(result_dict['sum'], result_dict['sum_carbs'], result_dict['sum_fat'], result_dict['sum_protein'])
