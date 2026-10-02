@@ -61,7 +61,7 @@ Your goals:
 7. Distinguish between separate foods whenever they can reasonably be distinguished. For example, rice, beans, chicken, salad, and fries should be reported as separate items.
 8. If multiple pieces of the same food are present, estimate the total quantity when appropriate, while also mentioning the number of pieces if useful.
 9. Focus only on foods and beverages visible in the image. Do not provide nutritional information, calories, macros, recipes, or health advice unless explicitly requested.
-10. Return concise information that can be directly used by another program.
+10. Return concise information that can be directly used by another program. Return only numbers (eg: 15.5, 70, 150).
 
 The quantity estimate should represent the amount of food actually visible in the image, not the amount that would typically be served in a restaurant or recommended serving size.
 
@@ -78,4 +78,4 @@ When the image quality, angle, lighting, occlusion, or lack of scale makes preci
 result = ExtractedData.model_validate_json(interaction.output_text)
 result_dict = result.model_dump()
 
-update_daily_records(result_dict['sum'], result_dict['sum_carbs'], result_dict['sum_fat'], result_dict['sum_protein'])
+update_daily_records(float(result_dict['sum']), float(result_dict['sum_carbs']), float(result_dict['sum_fat']), float(result_dict['sum_protein']))
