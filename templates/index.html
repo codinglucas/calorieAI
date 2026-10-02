@@ -14,5 +14,17 @@
         <button id="uploadBtn">Upload & Fetch Image</button>
 
         <img id="preview" alt="Uploaded Result" style="display: none; max-width: 400px;" />
+
+        <ul>
+        <!-- Loop through the JSON data passed from Python -->
+        {% for key, value in nutrition_data.items() %}
+            <li>
+                <strong>{{ key }}:</strong> 
+                <!-- Round the numbers to 1 decimal place so they look clean -->
+                {{ value | round(1) }}
+            </li>
+        {% endfor %}
+
+    </ul>
 </body>
 </html>

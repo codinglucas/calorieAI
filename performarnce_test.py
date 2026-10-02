@@ -29,7 +29,7 @@ generation_config = {
     'max_output_tokens': 65536,
     'top_p': 0.95,
     'thinking_level': 'medium',
-}
+}   
 
 for x in range(10):
     print(f"Running test {x}")

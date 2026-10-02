@@ -3,7 +3,7 @@ from datetime import datetime
 
 def check_keys(data, dt, filename):
 
-    column_names = [f"{dt}cal", f"{dt}carbs", f"{dt}fat", f"{dt}protein", "counter"]
+    column_names = [f"{dt}cal", f"{dt}carbs", f"{dt}fat", f"{dt}protein"]
 
     for x in column_names:
         if x in data:

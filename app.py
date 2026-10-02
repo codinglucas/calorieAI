@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, jsonify, send_from_directory
 from werkzeug.utils import secure_filename
 import os
+from main import main
+import io
+import json
 
 app = Flask(__name__)
 
@@ -25,8 +28,11 @@ def upload_file():
 
     if file:
         filename = secure_filename(file.filename) # guarantee safe filenames
-        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        file.save(filepath)
+        image_memory_buffer = io.BytesIO(file.read())
+
+        main(image_memory_buffer)
+
+        image_memory_buffer.close()
 
         # Return a JSON response with the image URL
         image_url = f"http://127.0.0.1:5000/uploads/{filename}"
@@ -39,6 +45,13 @@ def upload_file():
 def display_image(filename):
     # Sends the image file from the 'uploads' directory to the browser
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+
+@app.route('/show-data')
+def show_data():
+    with open('record.json', 'r') as file:
+        json_data = json.load(file)
+
+    return render_template('index.html', nutrition_data=json_data)
 
 if __name__ == '__main__':
     # Run the server in debug mode for development
