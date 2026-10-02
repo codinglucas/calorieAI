@@ -3,6 +3,9 @@ from google import genai
 from pydantic import BaseModel, Field
 import base64
 from data_handler import update_daily_records
+from dotenv import load_dotenv
+
+load_dotenv()
 
 with open('uploads/images.jpeg', 'rb') as file:
     image_bytes = file.read()
