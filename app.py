@@ -51,7 +51,7 @@ def show_data():
     with open('record.json', 'r') as file:
         json_data = json.load(file)
 
-    return render_template('index.html', nutrition_data=json_data)
+    return render_template('info.html', nutrition_data=json_data)
 
 if __name__ == '__main__':
     # Run the server in debug mode for development
