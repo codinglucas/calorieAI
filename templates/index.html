@@ -2,17 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Upload Image</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Upload image</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
     <script src="/static/script.js" defer></script>
 </head>
 <body>
-    <h2>Upload an Image to Python</h2>
-    
-    <!-- The action attribute links to your Python backend route -->
-        <!-- The 'name' attribute is how Python identifies this specific file -->
-        <input type="file" id="imageInput" accept="image/*" />
-        <button id="uploadBtn">Upload & Fetch Image</button>
+    <main class="card">
+        <h1>Upload an image</h1>
+        <p class="lead">Choose a photo from your device, then upload it to see the result.</p>
 
-        <img id="preview" alt="Uploaded Result" style="display: none; max-width: 400px;" />
+        <!-- script.js reads these ids, so keep them unchanged -->
+        <label for="imageInput">Image</label>
+        <input type="file" id="imageInput" accept="image/*">
+
+        <button id="uploadBtn" type="button">Upload image</button>
+
+        <img id="preview" alt="Uploaded result" style="display: none;">
+    </main>
 </body>
 </html>

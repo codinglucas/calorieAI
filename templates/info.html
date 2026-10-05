@@ -1,18 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Daily Nutrition Log</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nutrition summary</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h1>Nutrition Summary</h1>
-    <ul>
-        <!-- Loops directly through your JSON keys and values -->
-        {% for key, value in nutrition_data.items() %}
-            <li><strong>{{ key }}:</strong> {{ value | round(1) }}</li>
-        {% endfor %}
-    </ul>
-    
-    <br>
-    <a href="/">Back to Home</a>
+    <main class="card">
+        <h1>Nutrition summary</h1>
+        <p class="lead">Estimated values for your meal.</p>
+
+        <table class="nutrition">
+            <tbody>
+                <!-- Loops through the JSON keys and values; keys like "total_calories" display as "Total calories" -->
+                {% for key, value in nutrition_data.items() %}
+                <tr>
+                    <th scope="row">{{ key | replace('_', ' ') | capitalize }}</th>
+                    <td>{{ value | round(1) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a class="back-link" href="/">Upload another image</a>
+    </main>
 </body>
 </html>

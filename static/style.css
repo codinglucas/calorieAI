@@ -1,0 +1,182 @@
+:root {
+    --bg: #f4f5f2;
+    --surface: #ffffff;
+    --ink: #17262b;
+    --muted: #5d6b70;
+    --line: #dce1dc;
+    --accent: #0e6b5c;
+    --accent-hover: #0a5448;
+    --on-accent: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #101719;
+        --surface: #182226;
+        --ink: #e8eeee;
+        --muted: #93a3a6;
+        --line: #2b3a3e;
+        --accent: #3bb59e;
+        --accent-hover: #55c8b2;
+        --on-accent: #06201b;
+    }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.card {
+    width: min(100%, 28rem);
+    padding: 32px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+    margin: 0 0 6px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+}
+
+.lead {
+    margin: 0 0 24px;
+    color: var(--muted);
+}
+
+/* ---------- Upload page ---------- */
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 14px;
+    background: var(--bg);
+    border: 1.5px dashed var(--line);
+    border-radius: 12px;
+    color: var(--muted);
+    font: inherit;
+    font-size: 0.9375rem;
+    cursor: pointer;
+}
+
+input[type="file"]:hover {
+    border-color: var(--accent);
+}
+
+input[type="file"]::file-selector-button {
+    margin-right: 12px;
+    padding: 8px 14px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--ink);
+    font: inherit;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button {
+    width: 100%;
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: var(--accent);
+    border: 0;
+    border-radius: 10px;
+    color: var(--on-accent);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+button:hover {
+    background: var(--accent-hover);
+}
+
+button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+#preview {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 24px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+}
+
+/* ---------- Results page ---------- */
+
+.nutrition {
+    width: 100%;
+    margin: 0 0 24px;
+    border-collapse: collapse;
+}
+
+.nutrition th,
+.nutrition td {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.nutrition tr:first-child th,
+.nutrition tr:first-child td {
+    border-top: 1px solid var(--line);
+}
+
+.nutrition th {
+    text-align: left;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+.nutrition td {
+    text-align: right;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+.back-link {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Accessibility ---------- */
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
